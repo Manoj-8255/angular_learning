@@ -1,0 +1,53 @@
+
+<h1 highlight>
+  {{ title }}
+</h1>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-label-group">
+    <label>
+      User name:
+      <input
+        type="text"
+        placeholder="Username"
+        class="form-control"
+        formControlName="username"
+      />
+    </label>
+    <div
+      class="error"
+      *ngIf="
+        (form.get('username')?.touched && !form.get('username')?.value) ||
+        form.get('username')?.invalid
+      "
+    >
+      Enter username
+    </div>
+    <label for="inputPassword"
+      >Password
+      <input
+        type="password"
+        id="inputPassword"
+        class="form-control"
+        placeholder="Password"
+        aria-describedby="passwordHelpBlock"
+        autocomplete="current-password"
+        formControlName="password"
+      />
+    </label>
+  </div>
+  <button type="submit" [disabled]="!form.valid">submit</button>
+</form>
+
+<!-- <password-strength-meter
+    [password]="password"
+    [numberOfProgressBarItems]="5"
+    [enableFeedback]="true"
+  ></password-strength-meter>
+</div> -->
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->

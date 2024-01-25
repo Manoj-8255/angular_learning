@@ -1,0 +1,37 @@
+<!-- <ng-container *ngFor="let item of cusomters; let i = index">
+  <div>{{ i + 1 }} : {{ item['title'] }}</div>
+</ng-container> -->
+
+<div *ngIf="products && products.length > 0; else loader">
+  <table>
+    <tr>
+      <th>Brand</th>
+      <th>Title</th>
+      <th>Category</th>
+      <th>Price</th>
+    </tr>
+    <tr
+      *ngFor="let item of products; let i = index"
+      [class]="i % 2 === 0 ? 'gray' : ''"
+    >
+      <td>{{ item.brand }}</td>
+      <td>{{ item.title }}</td>
+      <td>{{ item.category }}</td>
+      <td>{{ item.price }}</td>
+    </tr>
+  </table>
+
+  <app-paginator
+    [currentPage]="currentPage"
+    [limit]="10"
+    [total]="100"
+    (changePage)="changePages($event)"
+  ></app-paginator>
+</div>
+<ng-template #loader> <div class="text-center">....loading</div> </ng-template>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->
